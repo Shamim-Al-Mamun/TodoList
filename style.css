@@ -10,7 +10,7 @@
   --accentFg: white;
   --accentBg: var(--bgnborder);
 }
-* {
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -62,12 +62,12 @@ margin-bottom: 1rem;
   margin-top: 4.5rem;
   width: 25%;
 }
-  .mode{
-    display: flex;
-    justify-content: flex-end;
-    width: 5%;
-  }
-  .time{
+.mode{
+  display: flex;
+  justify-content: flex-end;
+  width: 5%;
+}
+.time{
   font-weight: 500;
   color: black;
   box-shadow: 1px 1px 5px 3px var(--bgnborder);
