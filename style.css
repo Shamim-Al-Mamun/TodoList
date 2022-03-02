@@ -1,0 +1,323 @@
+:root {
+  --bgnborder:rgb(255, 130, 150);
+  --borderOp:rgb(255, 99, 71, .1);
+  --err: red;
+}
+.dropdown {
+  --radius: 2em;
+  --baseFg: var(--bgnborder);
+  --baseBg: white;
+  --accentFg: white;
+  --accentBg: var(--bgnborder);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  color: white;
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+}
+.far{
+margin-bottom: 1rem;
+}
+.flex-container{
+  background-color: var(--bgnborder);
+  height: 650px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-items{
+  background-color: whitesmoke;
+  width: 60%;
+  min-width: 370px;
+  height: 550px;
+  border-radius: 1rem;
+  box-shadow: 1px 10px 25px 5px rgb(128, 128, 128, .8);
+  display: flex;
+  flex-direction: column;
+  /* z-index: 1; */
+  align-items: center;
+}
+.flex-item{
+  margin: 1rem;
+  width: 95%;
+  display: flex;
+  /* justify-content: space-around; */
+}
+.header {
+  margin: 1rem;
+  color: rgb(0, 0, 0, .9);
+  font-size: 1.5rem;
+  width: 70%;
+  height: 10rem;
+  line-height: 1.6;
+}
+.timer{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 4.5rem;
+  width: 25%;
+}
+  .mode{
+    display: flex;
+    justify-content: flex-end;
+    width: 5%;
+  }
+  .time{
+  font-weight: 500;
+  color: black;
+  box-shadow: 1px 1px 5px 3px var(--bgnborder);
+  border-radius: 1rem;
+  letter-spacing: .1rem;
+  padding: .5rem;
+}
+.input{
+  width: 100%;
+  margin-left: 1rem;
+}
+.todo-input{
+  padding: .5rem;
+  border-radius: 1rem;
+  border: 1px solid var(--bgnborder);
+  width: 50%;
+}
+input[type=text], input {
+  outline: none;
+  border: 1px solid var(--bgnborder);
+}
+ 
+input[type=text]:focus, input:focus {
+  box-shadow: 0 0 5px var(--bgnborder);
+  border: 1px solid rgba(var(--bgnborder), .9);
+}
+.todo-button{
+  padding: .5rem;
+  border-radius: 1rem;
+  border: 1px solid var(--bgnborder);
+  cursor: pointer;
+  background-color: white;
+}
+.todo-button:hover{
+  background-color: var(--bgnborder);
+  color: white;
+}
+.todo-clear{
+  padding: .4rem;
+  margin: .3rem;
+}
+.select{
+  display: none;
+}
+
+/* Custome dropdown style */
+select {
+  font: 400 12px/1.3 sans-serif;
+  -webkit-appearance: none;
+  padding: .5rem;
+  appearance: none;
+  cursor: pointer;
+  color: var(--baseFg);
+  border: 1px solid var(--baseFg);
+  line-height: 1;
+  outline: 0;
+  padding: 0.65em 2.5em 0.55em 0.75em;
+  border-radius: var(--radius);
+  background-color: var(--baseBg);
+  background-image: linear-gradient(var(--baseFg), var(--baseFg)),
+    linear-gradient(-135deg, transparent 50%, var(--accentBg) 50%),
+    linear-gradient(-225deg, transparent 50%, var(--accentBg) 50%),
+    linear-gradient(var(--accentBg) 42%, var(--accentFg) 42%);
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+  background-size: 1px 100%, 20px 22px, 20px 22px, 20px 100%;
+  background-position: right 20px center, right bottom, right bottom, right bottom;   
+}
+select:hover {
+  background-image: linear-gradient(var(--accentFg), var(--accentFg)),
+    linear-gradient(-135deg, transparent 50%, var(--accentFg) 50%),
+    linear-gradient(-225deg, transparent 50%, var(--accentFg) 50%),
+    linear-gradient(var(--accentFg) 42%, var(--accentBg) 42%);
+}
+select:active {
+  background-image: linear-gradient(var(--accentFg), var(--accentFg)),
+    linear-gradient(-135deg, transparent 50%, var(--accentFg) 50%),
+    linear-gradient(-225deg, transparent 50%, var(--accentFg) 50%),
+    linear-gradient(var(--accentFg) 42%, var(--accentBg) 42%);
+  color: var(--accentBg);
+  border-color: var(--accentFg);
+  background-color: var(--accentFg);
+}
+
+/* Todo lists */
+.todo-container {
+  background-color:var(--borderOp);
+  border-radius: 1rem;
+  margin-left: 2rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.todo-list {
+  list-style: none;
+  margin: .1rem;
+  border-radius: 1rem;
+}
+.todo {
+  margin: 0.5rem;
+  background: white;
+  font-size: .8rem;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 1s ease;
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+}
+.filter-todo {
+  padding: .5rem 1rem;
+  width: 15%
+}
+.todo li {
+  flex:1;
+}
+.trash-btn,
+.complete-btn {
+  font-weight: 900;
+  border: none;
+  padding: .5rem;
+  cursor: pointer;
+  font-size: .85rem;
+  background-color: white;
+  border-radius: 1rem;
+}
+.trash-btn{
+  color: rgb(255, 0, 0, .9);
+}
+.complete-btn{
+  color: rgb(0, 128, 0, .9);
+}
+.complete-btn:hover{
+  background-color: rgb(128, 128, 128, .1);
+}
+.trash-btn:hover {  
+  background-color: rgb(128, 128, 128, .1);
+}
+.todo-item {
+  padding: 0rem 0.5rem;
+}
+.fa-trash,
+.fa-check {
+  pointer-events: none;
+  border-radius: 1rem;
+}
+.fall {
+  transform: translateX(-10rem) rotateZ(0deg);
+  opacity: 0;
+}
+.fallDone {
+  transform: translateX(10rem) rotateZ(0deg);
+  opacity: 0;
+}
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+/* Toggle switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 17px;
+}
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bgnborder);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+input:checked + .slider {
+  background-color: gray;
+}
+input:focus + .slider {
+  box-shadow: 0 0 1px rgb(128, 128, 128, .9);
+}
+input:checked + .slider:before {
+  -webkit-transform: translateX(13px);
+  -ms-transform: translateX(13px);
+  transform: translateX(13px);
+}
+/* Rounded sliders */
+.slider.round {
+  border-radius: 17px;
+}
+.slider.round:before {
+  border-radius: 50%;
+}
+.error{
+  color: var(--err);
+  opacity: .8;
+  margin-left: 3rem;
+}
+/* Responsive */
+@media screen and (max-width: 680px) {
+  .header {
+    font-size: 1.3rem;
+    line-height: 1.3;
+  }
+  .time{
+    font-weight: 590;
+    letter-spacing: 0rem;
+    padding: .5rem;
+    height: 7rem;
+  }
+  .filter-todo {
+    width: 25%;
+  }
+  .date{
+    font-size: .8rem;
+  }
+  .input .todo-input{
+    width: 130px;
+  }
+  .todo-clear{
+    float: right;
+  }
+  .todo-clear{
+    margin: 0;
+  }
+  .far{
+    margin-bottom: 0;
+  }
+  .todo-container {
+    margin-left: 1rem;
+  }
+  .error{
+    margin: .5rem;
+    font-size: .8rem;
+  }
+}
