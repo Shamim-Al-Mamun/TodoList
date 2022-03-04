@@ -3,22 +3,24 @@ const realTime = document.querySelector(".date");
 const todoInput = document.querySelector(".todo-input");
 const todoButton = document.querySelector(".todo-button");
 const filterOption = document.querySelector(".filter-todo");
+const themeChange = document.querySelector(".theme-button");
 const todoClear = document.querySelector(".todo-clear" );
 const todoList = document.querySelector(".todo-list");
-const error = document.querySelector('.error');
+const error = document.querySelector(".error");
 
 //Event Listeners
 document.addEventListener("DOMContentLoaded", getTodos);
-todoButton.addEventListener("click", addTodo);
-todoList.addEventListener("click", deleteTodo);
+themeChange.addEventListener("click", themeChanger);
 filterOption.addEventListener("click", filterTodo);
 todoClear.addEventListener("click", clearTodos);
+todoList.addEventListener("click", deleteTodo);
+todoButton.addEventListener("click", addTodo);
 
 //add button
 function addTodo(e) {
   //Prevent natural behaviour
   e.preventDefault();
-  if(todoInput.value){
+  if(todoInput.value && todoInput.value.length <=50){
     todos = JSON.parse(localStorage.getItem("todos"));
     if(todos=== null || todos.length < 5){
       const {timestamp} = TimeStamp();
@@ -62,19 +64,23 @@ function addTodo(e) {
     }
   }
   else{
-    error.innerHTML = "Input required!";
-    const errorMessage = () =>{error.innerHTML = ""}
-    const nonVisible = setTimeout(errorMessage, 2000);
+    if(todoInput.value.length >50){
+      error.innerHTML = "Maximum 50 characters!";
+      const errorMessage = () =>{error.innerHTML = ""}
+      const nonVisible = setTimeout(errorMessage, 2000);
+    }else{
+
+      error.innerHTML = "Input required!";
+      const errorMessage = () =>{error.innerHTML = ""}
+      const nonVisible = setTimeout(errorMessage, 2000);
+    }
   }
 }
 
 //trash button
 function deleteTodo(e) {
   const item = e.target;
-
   if (item.classList[0] === "trash-btn") {
-    // e.target.parentElement.remove();
-
     const todo = item.parentElement;
     if(todo.classList[1] === "completed"){
     //completed todo
@@ -190,12 +196,11 @@ function getTodos() {
   const {day, date, month, year} = TimeStamp();
   realTime.innerHTML = `${day}, <br/>
   ${date} ${month} ${year}`;
-
 }
 
 //clear all button
-function clearTodos(event){
-  event.preventDefault();
+function clearTodos(){
+  // event.preventDefault();
   var todolists = document.querySelectorAll('.todo');
 
   for(i =todolists.length; i> 0; i--){
@@ -218,22 +223,25 @@ function clearTodos(event){
 
 //Toggle theme change
   function themeChanger() {
-    var checkBox = document.getElementById("myCheck");
     var root = document.documentElement;
-    
-    if (checkBox.checked){
+    if (themeChange.checked){
       const darkTheme ={
         background: "rgb(128, 128, 128, .9)",
-        border :"rgb(128, 128, 128, .1)"
+        border :"rgb(128, 128, 128, .1)",
+        hover: "rgb(128, 128, 128, 1)"
       };
-      root.style.setProperty('--bgnborder', darkTheme.background);
+      root.style.setProperty('--clr-pink', darkTheme.background);
       root.style.setProperty('--borderOp', darkTheme.border );
-    } else {
+      root.style.setProperty('--hover', darkTheme.hover );
+    }
+    else {
       const Pinktheme ={
         background: "rgb(255, 130, 150)",
-        border : "rgb(255, 130, 150, .1)"
+        border : "rgb(255, 130, 150, .3)",
+        hover: "rgb(255, 100, 150)"
       };
-      root.style.setProperty('--bgnborder', Pinktheme.background);
+      root.style.setProperty('--clr-pink', Pinktheme.background);
       root.style.setProperty('--borderOp', Pinktheme.border );
+      root.style.setProperty('--hover', Pinktheme.hover );
     }
   }

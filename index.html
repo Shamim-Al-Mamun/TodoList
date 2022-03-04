@@ -12,25 +12,20 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <div class="flex-container">
-      <div class="flex-items">
-        <div class="flex-item">
-          <div class="header">
-            <h1>What's your plan today</h1>
-          </div>
-          <div class="timer">
-            <span class="time"><i style='font-size:24px' class='far'>&#xf073;</i><br/><span class="date"></span></span>
-          </div>
-          <div class="mode">
-            <span  class="toggler">
-              <label class="switch">
-                <input type="checkbox" id="myCheck" onclick="themeChanger()">
-                <span class="slider round"></span>
-              </label>
-            </span>
-          </div>
-        </div>
-        <div class="flex-item">
+    <div class="container">
+      <div class="row1">
+        <h1>What's your plan today</h1>
+        <span class="mode">
+          <span  class="toggler">
+            <label class="switch">
+              <input type="checkbox" class="theme-button">
+              <span class="slider round"></span>
+            </label>
+          </span>
+        </span>
+      </div>
+      <div class="grid-container">
+        <div class="grid-item item1">
           <div class="input">
             <form>
                 <input type="text" class="todo-input" placeholder="Type here"/>
@@ -40,14 +35,22 @@
                   <option value="completed">Completed</option>
                   <option value="uncompleted">Uncompleted</option>
               </select>
-              <button class="todo-clear todo-button" type="submit">Clear All</button><br/><p class="error"></p>
-              </form>
-            </div>
-         </div>
-        <div class="flex-item">
+            </form>
+            <br/><p class="error"></p>
+          </div>
+        </div>
+        <div class="grid-item item2">
+          <div class="time">
+            <span><i class='far'>&#xf073;</i><br/><span class="date"></span></span>
+          </div>
+        </div>
+        <div class="grid-item item3">
           <div class="todo-container">
             <ul class="todo-list"></ul>
           </div>
+        </div>  
+        <div class="grid-item item4">
+          <button class="todo-clear todo-button" type="submit">Clear All</button>
         </div>
       </div>
     </div>
